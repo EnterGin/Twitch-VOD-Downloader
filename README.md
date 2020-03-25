@@ -22,4 +22,4 @@ Python script for downloading VODs.
 3. Download ffmpeg
 4. Download script and open it using [notepad++](https://notepad-plus-plus.org/downloads/) (it is much better)
 5. Change options to preferred
-6. You can also use this script using command line: "Twitch_VOD_Downloader.py -v <VOD id> -q <quality>"
+6. You can also use this script using command line: "Twitch_VOD_Downloader.py -v (VOD id) -q (quality)"
