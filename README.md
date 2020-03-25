@@ -17,7 +17,7 @@ Python script for downloading VODs.
 
 # Installing
 
-1. Install python 3
+1. Install Python 3
 2. Instal Twitch Chat Downloader and Streamlink
 3. Download ffmpeg
 4. Download script and open it using [notepad++](https://notepad-plus-plus.org/downloads/) (it is much better)
