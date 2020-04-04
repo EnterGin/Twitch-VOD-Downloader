@@ -1,4 +1,4 @@
-#Twitch VOD Downloader v1.0.0 https://github.com/EnterGin/Twitch-VOD-Downloader
+#Twitch VOD Downloader v1.0.1 https://github.com/EnterGin/Twitch-VOD-Downloader
 
 import requests
 import os
@@ -22,7 +22,7 @@ class TwitchDownloader:
         self.chatdownload = 1 #0 - disable chat downloading, 1 - enable chat downloading
         self.cmdstate = 1 #0 - not minimazed cmd close after processing, 1 - minimazed cmd close after processing, 2 - minimazed cmd don't close after processing
         self.VOD_folder = 1 #0 - not create folder for processed VOD, 1 - create folder for processed VOD
-        self.download_preview = 1 #0 - not download VOD preview, 1 - download VOD preview
+        self.download_preview = 0 #0 - not download VOD preview, 1 - download VOD preview
         self.deleteVOD = 1 #0 - not delete downloaded VOD file, 1 - delete downloaded VOD file
         
         
@@ -112,7 +112,7 @@ class TwitchDownloader:
         stream_folder = VOD_date_tz.strftime("%Y%m%d") + "_" + info["title"] + '_' + info["game"] + '_' + self.username
         stream_folder = "".join(x for x in stream_folder if x.isalnum() or not x in ["/","\\",":","?","*",'"',">","<","|"])
         
-        stream_filename = VOD_date_tz.strftime("%Y%m%d_(%H-%M)") + "_" + stream_folder[9:] + ".mp4"
+        stream_filename = VOD_date_tz.strftime("%Y%m%d_(%H-%M)") + "_" + self.vod_id + "_" + stream_folder[9:] + ".mp4"
         
         recorded_filename = os.path.join(self.downloaded_path, stream_filename)
         
