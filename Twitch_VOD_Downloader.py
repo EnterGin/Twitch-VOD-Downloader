@@ -141,7 +141,10 @@ class TwitchDownloader:
             
         if len(processed_filename) >= 260:
             long_title_window = "cmd.exe /c start".split()
-            difference = int((2*len(stream_title) - len(processed_filename) + 250)/2)
+            if self.short_folder == 1 or self.vod_folder == 0:
+                difference = len(stream_title) - len(processed_filename) + 250
+            else:
+                difference = int((2*len(stream_title) - len(processed_filename) + 250)/2)
             if difference < 0:
                 subprocess.call(long_title_window + ['echo', 'Path to stream is too long. (Max path length is 259 symbols) Title cannot be cropped, please check root path.'])
                 sys.exit()  
