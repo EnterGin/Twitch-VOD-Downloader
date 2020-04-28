@@ -45,7 +45,12 @@ class TwitchDownloader:
                 elif e.response.reason == 'Not Found':
                     vod_not_found_window = "cmd.exe /c start".split()
                     subprocess.call(vod_not_found_window + ['echo', 'VOD not found.'])
-                    sys.exit()    
+                    sys.exit()
+            else:
+                vod_another_error = str(e)
+                vod_another_error_window = "cmd.exe /c start".split()
+                subprocess.call(vod_another_error_window + ['echo', vod_another_error])
+                sys.exit()
                     
         self.username = vod_infodic["channel"]["name"]
         
@@ -88,10 +93,7 @@ class TwitchDownloader:
 
         self.download()  
         
-        
-
     def download(self):
-    
         info = self.VODinfo()
         
         created_at = info["created_at"]
@@ -184,8 +186,12 @@ class TwitchDownloader:
             try:
                 os.chdir(self.ffmpeg_path)
                 subprocess.call(['ffmpeg', '-y', '-i', recorded_filename, '-analyzeduration', '2147483647', '-probesize', '2147483647', '-c:v', 'copy', '-start_at_zero', '-copyts', '-bsf:a', 'aac_adtstoasc', processed_filename])
-                if self.deletevod == 1:
-                    os.remove(recorded_filename)
+                if(os.path.exists(processed_filename) is True):
+                    if self.deletevod == 1:
+                        os.remove(recorded_filename)
+                else:
+                    processing_err_window = "cmd.exe /c start".split()
+                    subprocess.call(processing_err_window + ['echo', 'Processed file not found. VOD will not be deleted.'])
             except Exception as e:
                 print(e)
         else:
