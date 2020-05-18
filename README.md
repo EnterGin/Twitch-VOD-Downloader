@@ -1,6 +1,6 @@
 # Twitch VOD Downloader
 Python script for downloading VODs via streamlink.
-This is part of [Auto Stream Recording Twitch](https://github.com/EnterGin/Auto-Stream-Recording-Twitch)
+This is part of [Auto Stream Recording Twitch](https://github.com/EnterGin/Auto-Stream-Recording-Twitch).
 
 # Requirements
 
